@@ -47,7 +47,7 @@
           <button
             disabled={currentPage === 1}
             onclick={() => (currentPage = Math.max(1, currentPage - 1))}
-            class={`px-3 py-1 text-sm font-medium text-neutral-600 dark:text-neutral-400 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+            class={`px-3 py-1 text-sm font-medium text-neutral-600 dark:text-neutral-400 ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
           >
             {$postsConfig.pagination.previous}
           </button>
@@ -55,7 +55,7 @@
             <button
               onclick={() => (currentPage = index + 1)}
               aria-current={index + 1 === currentPage ? 'page' : undefined}
-              class={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium ${index + 1 === currentPage ? 'bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900' : 'text-neutral-600 dark:text-neutral-400'}`}
+              class={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium cursor-pointer ${index + 1 === currentPage ? 'bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900' : 'text-neutral-600 dark:text-neutral-400'}`}
             >
               {index + 1}
             </button>
@@ -63,7 +63,7 @@
           <button
             disabled={currentPage === totalPages}
             onclick={() => (currentPage = Math.min(totalPages, currentPage + 1))}
-            class={`px-3 py-1 text-sm font-medium text-neutral-600 dark:text-neutral-400 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''}`}
+            class={`px-3 py-1 text-sm font-medium text-neutral-600 dark:text-neutral-400 ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
           >
             {$postsConfig.pagination.next}
           </button>
