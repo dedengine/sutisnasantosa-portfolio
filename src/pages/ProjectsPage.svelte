@@ -5,11 +5,11 @@
   import { asset } from '../lib/utils/asset';
 
   const PROJECTS_PER_PAGE = 6;
-  $: totalPages = Math.ceil($projectsConfig.items.length / PROJECTS_PER_PAGE);
-  let currentPage = 1;
+  let currentPage = $state(1);
 
-  $: startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
-  $: currentItems = $projectsConfig.items.slice(startIndex, startIndex + PROJECTS_PER_PAGE);
+  let totalPages = $derived(Math.ceil($projectsConfig.items.length / PROJECTS_PER_PAGE));
+  let startIndex = $derived((currentPage - 1) * PROJECTS_PER_PAGE);
+  let currentItems = $derived($projectsConfig.items.slice(startIndex, startIndex + PROJECTS_PER_PAGE));
 </script>
 
 <main class="min-h-screen flex flex-col">

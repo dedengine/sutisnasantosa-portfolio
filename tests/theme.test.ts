@@ -41,3 +41,22 @@ test('follows the device theme until the user picks one', async () => {
   fire!({ matches: true });
   expect(document.documentElement.classList.contains('dark')).toBe(false);
 });
+
+test('still boots when browser storage is blocked', async () => {
+  vi.unstubAllGlobals();
+  vi.resetModules();
+  const getItem = vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+    throw new DOMException('blocked', 'SecurityError');
+  });
+  const setItem = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+    throw new DOMException('blocked', 'SecurityError');
+  });
+
+  try {
+    const { theme: freshTheme } = await import('../src/lib/stores/theme');
+    expect(() => freshTheme.set('dark')).not.toThrow();
+  } finally {
+    getItem.mockRestore();
+    setItem.mockRestore();
+  }
+});

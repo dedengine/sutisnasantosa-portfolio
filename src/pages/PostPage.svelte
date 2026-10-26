@@ -3,11 +3,11 @@
   import Footer from '../lib/components/Footer.svelte';
   import { postsConfig } from '../lib/config/posts';
 
-  export let params: { slug?: string } | undefined;
+  let { params }: { params?: { slug?: string } } = $props();
 
-  $: post = params?.slug
+  let post = $derived(params?.slug
     ? $postsConfig.posts.find((p) => p.slug === `posts/${params!.slug}`)
-    : undefined;
+    : undefined);
 </script>
 
 <div class="min-h-screen flex flex-col">

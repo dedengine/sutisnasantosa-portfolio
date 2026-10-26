@@ -10,9 +10,25 @@ function deviceTheme(): ThemeName {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
 
+function readChoice(): string | null {
+  try {
+    return localStorage.getItem(STORAGE_KEY)
+  } catch {
+    return null
+  }
+}
+
+function writeChoice(value: ThemeName) {
+  try {
+    localStorage.setItem(STORAGE_KEY, value)
+  } catch {
+    // storage can be blocked; the chosen theme still applies to this visit
+  }
+}
+
 function resolveInitial(): ThemeName {
   if (typeof window === 'undefined') return 'dark'
-  const stored = localStorage.getItem(STORAGE_KEY)
+  const stored = readChoice()
   if (stored === 'light' || stored === 'dark') return stored
   return deviceTheme()
 }
@@ -27,14 +43,14 @@ store.subscribe((value) => {
 // Keep following the device while the user has not picked a theme
 if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
-    if (!localStorage.getItem(STORAGE_KEY)) store.set(event.matches ? 'dark' : 'light')
+    if (!readChoice()) store.set(event.matches ? 'dark' : 'light')
   })
 }
 
 export const theme = {
   subscribe: store.subscribe,
   set(value: ThemeName) {
-    localStorage.setItem(STORAGE_KEY, value)
+    writeChoice(value)
     store.set(value)
   },
   update(fn: (value: ThemeName) => ThemeName) {

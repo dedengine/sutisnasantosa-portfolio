@@ -54,7 +54,7 @@ const en = {
   },
   connect: {
     title: "Let's Connect",
-    description: "Feel free to reach out if you want to collaborate or just say hi! You can find us on social media or drop us an email.",
+    description: "Feel free to reach out if you want to collaborate or just say hi! You can drop us an email.",
     links: {
       twitter: {
         text: "follow us on twitter",
@@ -123,7 +123,7 @@ const id = {
   },
   connect: {
     title: "Mari Terhubung",
-    description: "Jangan ragu menghubungi saya kalau ingin berkolaborasi atau sekadar menyapa! Kamu bisa ikuti saya di twitter atau kirim email.",
+    description: "Jangan ragu menghubungi saya kalau ingin berkolaborasi atau sekadar menyapa! Kamu bisa kirim email.",
     links: {
       twitter: {
         text: "ikuti saya di twitter",

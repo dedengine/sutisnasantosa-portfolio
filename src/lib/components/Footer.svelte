@@ -5,7 +5,7 @@
 </script>
 
 <section class="site-footer text-gray-700 bg-white border-t dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700">
-  <div class="container flex flex-col items-center justify-center min-h-[40px] mx-auto px-7 max-w-7xl sm:flex-row sm:min-h-[50px]">
+  <div class="container flex flex-col items-center justify-center min-h-10 mx-auto px-7 max-w-7xl sm:flex-row sm:min-h-12.5">
     <a use:link href="/" class="h-5 text-base group relative z-30 flex items-center space-x-1.5 text-black dark:text-white font-semibold">
       <span class="text-xl -translate-y-0.5 group-hover:-rotate-12 group-hover:scale-[1.2] ease-in-out duration-300">✦</span>
       <span class="-translate-y-0.5">{$globalConfig.site.author}</span>

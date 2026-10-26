@@ -3,13 +3,23 @@
   import { postsConfig } from '../config/posts';
   import { asset } from '../utils/asset';
 
-  export let title: string;
-  export let description: string;
-  export let date: string;
-  export let href: string;
-  export let pattern: 'dots' | 'grid' | 'waves' | 'circles' = 'dots';
-  export let imageUrl: string = '/assets/images/posts/post1.jpg';
-  export let readingTime: number = 5;
+  let {
+    title,
+    description,
+    date,
+    href,
+    pattern = 'dots',
+    imageUrl = '/assets/images/posts/post1.jpg',
+    readingTime = 5
+  }: {
+    title: string;
+    description: string;
+    date: string;
+    href: string;
+    pattern?: 'dots' | 'grid' | 'waves' | 'circles';
+    imageUrl?: string;
+    readingTime?: number;
+  } = $props();
 
   const patterns: Record<string, string> = {
     dots: 'bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] dark:bg-[radial-gradient(#404040_1px,transparent_1px)]',

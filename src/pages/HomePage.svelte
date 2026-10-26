@@ -6,9 +6,9 @@
   import { homeConfig } from '../lib/config/home';
   import { asset } from '../lib/utils/asset';
 
-  $: imageSrc = $theme === 'dark'
+  let imageSrc = $derived($theme === 'dark'
     ? asset('/assets/images/tech-background.svg')
-    : asset('/assets/images/tech-background-light.svg');
+    : asset('/assets/images/tech-background-light.svg'));
 </script>
 
 <main class="min-h-screen flex flex-col">
@@ -59,7 +59,7 @@
 
           <div class="w-[45%] flex items-center justify-center bg-transparent home-hero-image">
             <div class="relative w-[700px] h-[700px] home-hero-image-box">
-              <img src={imageSrc} alt="Tech background" class="w-full h-full" style="transform: scale(1.3);" />
+              <img src={imageSrc} alt="Tech background" class="w-full h-full opacity-60" style="transform: scale(1.3);" />
             </div>
           </div>
         </div>

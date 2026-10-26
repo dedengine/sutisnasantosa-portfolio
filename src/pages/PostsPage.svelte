@@ -5,11 +5,11 @@
   import { postsConfig } from '../lib/config/posts';
 
   const POSTS_PER_PAGE = 5;
-  $: totalPages = Math.ceil($postsConfig.posts.length / POSTS_PER_PAGE);
-  let currentPage = 1;
+  let currentPage = $state(1);
 
-  $: startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  $: currentPosts = $postsConfig.posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  let totalPages = $derived(Math.ceil($postsConfig.posts.length / POSTS_PER_PAGE));
+  let startIndex = $derived((currentPage - 1) * POSTS_PER_PAGE);
+  let currentPosts = $derived($postsConfig.posts.slice(startIndex, startIndex + POSTS_PER_PAGE));
 </script>
 
 <main class="min-h-screen flex flex-col">
